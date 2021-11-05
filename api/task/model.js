@@ -14,8 +14,9 @@ function getTask() {
         't.task_completed',
         'p.project_name', 
         'p.project_description',
-        
-    );
+        't.task_id'
+    )
+    .orderBy('t.task_id');
 }
 function addTask(tasks) {
     return db('tasks').insert(tasks)
@@ -30,7 +31,7 @@ function addTask(tasks) {
                     't.*',
                     'p.project_name', 
                     'p.project_description',
-                    
+
                 )
                 .where('task_id', task_id)
                 .first()
